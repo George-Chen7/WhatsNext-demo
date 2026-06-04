@@ -44,6 +44,16 @@ kotlin {
     jvmToolchain(17)
 }
 
+val kaptSqliteTmpDir = layout.buildDirectory.dir("tmp/kaptSqlite").get().asFile
+tasks.withType<org.jetbrains.kotlin.gradle.internal.KaptWithoutKotlincTask>().configureEach {
+    doFirst {
+        kaptSqliteTmpDir.mkdirs()
+    }
+    val tmpPath = kaptSqliteTmpDir.invariantSeparatorsPath
+    kaptProcessJvmArgs.add("-Djava.io.tmpdir=$tmpPath")
+    kaptProcessJvmArgs.add("-Dorg.sqlite.tmpdir=$tmpPath")
+}
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
