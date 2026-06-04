@@ -7,16 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primary">#2563EB</color>
-    <color name="primary_dark">#1D4ED8</color>
-    <color name="brand_navy">#061947</color>
-    <color name="brand_navy_light">#0B1A33</color>
+    <color name="primary">#051A49</color>
+    <color name="primary_dark">#051A49</color>
+    <color name="brand_navy">#051A49</color>
+    <color name="brand_navy_light">#051A49</color>
     <color name="accent_magenta">#E0007A</color>
     <color name="screen_background">#F5F7FB</color>
     <color name="card_background">#FFFFFF</color>
     <color name="border_light">#D9DEE8</color>
-    <color name="text_primary">#1F2937</color>
-    <color name="text_secondary">#6B7280</color>
-    <color name="bottom_nav_selected">#2563EB</color>
-    <color name="bottom_nav_unselected">#9CA3AF</color>
+    <color name="text_primary">#2E3849</color>
+    <color name="text_secondary">#5A6881</color>
+    <color name="bottom_nav_selected">#051A49</color>
+    <color name="bottom_nav_unselected">#5A6881</color>
 </resources>

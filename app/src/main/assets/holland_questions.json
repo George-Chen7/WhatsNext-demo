@@ -1,0 +1,422 @@
+[
+  {
+    "id": 1,
+    "dimension": "R",
+    "dimensionName": "现实型 Realistic",
+    "question": "我喜欢使用工具、机器或设备完成实际操作。",
+    "reverse": false
+  },
+  {
+    "id": 2,
+    "dimension": "R",
+    "dimensionName": "现实型 Realistic",
+    "question": "我对修理、组装或维护物品感兴趣。",
+    "reverse": false
+  },
+  {
+    "id": 3,
+    "dimension": "R",
+    "dimensionName": "现实型 Realistic",
+    "question": "相比长时间讨论，我更喜欢通过动手实践解决问题。",
+    "reverse": false
+  },
+  {
+    "id": 4,
+    "dimension": "R",
+    "dimensionName": "现实型 Realistic",
+    "question": "我愿意从事需要体力、户外活动或实际操作的工作。",
+    "reverse": false
+  },
+  {
+    "id": 5,
+    "dimension": "R",
+    "dimensionName": "现实型 Realistic",
+    "question": "我喜欢了解机械、电子、建筑或工程设备的工作原理。",
+    "reverse": false
+  },
+  {
+    "id": 6,
+    "dimension": "R",
+    "dimensionName": "现实型 Realistic",
+    "question": "我能接受按照明确步骤完成具体任务。",
+    "reverse": false
+  },
+  {
+    "id": 7,
+    "dimension": "R",
+    "dimensionName": "现实型 Realistic",
+    "question": "我喜欢制作模型、手工制品或实际产品。",
+    "reverse": false
+  },
+  {
+    "id": 8,
+    "dimension": "R",
+    "dimensionName": "现实型 Realistic",
+    "question": "我对车辆、仪器、设备或生产流程感兴趣。",
+    "reverse": false
+  },
+  {
+    "id": 9,
+    "dimension": "R",
+    "dimensionName": "现实型 Realistic",
+    "question": "我更愿意处理看得见、摸得着的实际问题。",
+    "reverse": false
+  },
+  {
+    "id": 10,
+    "dimension": "R",
+    "dimensionName": "现实型 Realistic",
+    "question": "我喜欢通过实验、操作或练习来掌握技能。",
+    "reverse": false
+  },
+  {
+    "id": 11,
+    "dimension": "I",
+    "dimensionName": "研究型 Investigative",
+    "question": "我喜欢分析问题背后的原因和规律。",
+    "reverse": false
+  },
+  {
+    "id": 12,
+    "dimension": "I",
+    "dimensionName": "研究型 Investigative",
+    "question": "我愿意花时间查资料、做研究或验证结论。",
+    "reverse": false
+  },
+  {
+    "id": 13,
+    "dimension": "I",
+    "dimensionName": "研究型 Investigative",
+    "question": "我对科学、技术、医学、数据或学术问题感兴趣。",
+    "reverse": false
+  },
+  {
+    "id": 14,
+    "dimension": "I",
+    "dimensionName": "研究型 Investigative",
+    "question": "遇到复杂问题时，我通常会先思考和分析再行动。",
+    "reverse": false
+  },
+  {
+    "id": 15,
+    "dimension": "I",
+    "dimensionName": "研究型 Investigative",
+    "question": "我喜欢解决需要逻辑推理或独立思考的问题。",
+    "reverse": false
+  },
+  {
+    "id": 16,
+    "dimension": "I",
+    "dimensionName": "研究型 Investigative",
+    "question": "我愿意学习抽象理论、模型或专业知识。",
+    "reverse": false
+  },
+  {
+    "id": 17,
+    "dimension": "I",
+    "dimensionName": "研究型 Investigative",
+    "question": "我喜欢用数据、证据或事实支持自己的判断。",
+    "reverse": false
+  },
+  {
+    "id": 18,
+    "dimension": "I",
+    "dimensionName": "研究型 Investigative",
+    "question": "我对探索未知问题或提出新解释有兴趣。",
+    "reverse": false
+  },
+  {
+    "id": 19,
+    "dimension": "I",
+    "dimensionName": "研究型 Investigative",
+    "question": "我喜欢阅读专业文章、报告或科普内容。",
+    "reverse": false
+  },
+  {
+    "id": 20,
+    "dimension": "I",
+    "dimensionName": "研究型 Investigative",
+    "question": "我愿意独立完成需要深入思考的任务。",
+    "reverse": false
+  },
+  {
+    "id": 21,
+    "dimension": "A",
+    "dimensionName": "艺术型 Artistic",
+    "question": "我喜欢通过文字、图像、音乐、表演或设计表达想法。",
+    "reverse": false
+  },
+  {
+    "id": 22,
+    "dimension": "A",
+    "dimensionName": "艺术型 Artistic",
+    "question": "我喜欢有创意和自由发挥空间的任务。",
+    "reverse": false
+  },
+  {
+    "id": 23,
+    "dimension": "A",
+    "dimensionName": "艺术型 Artistic",
+    "question": "我对美感、风格、色彩、构图或视觉呈现比较敏感。",
+    "reverse": false
+  },
+  {
+    "id": 24,
+    "dimension": "A",
+    "dimensionName": "艺术型 Artistic",
+    "question": "我愿意尝试不同寻常的想法或表达方式。",
+    "reverse": false
+  },
+  {
+    "id": 25,
+    "dimension": "A",
+    "dimensionName": "艺术型 Artistic",
+    "question": "我喜欢写作、绘画、摄影、剪辑、设计或创作内容。",
+    "reverse": false
+  },
+  {
+    "id": 26,
+    "dimension": "A",
+    "dimensionName": "艺术型 Artistic",
+    "question": "相比固定流程，我更喜欢开放式任务。",
+    "reverse": false
+  },
+  {
+    "id": 27,
+    "dimension": "A",
+    "dimensionName": "艺术型 Artistic",
+    "question": "我喜欢为作品、活动或产品设计独特的表现形式。",
+    "reverse": false
+  },
+  {
+    "id": 28,
+    "dimension": "A",
+    "dimensionName": "艺术型 Artistic",
+    "question": "我容易被文学、电影、音乐、艺术或设计作品打动。",
+    "reverse": false
+  },
+  {
+    "id": 29,
+    "dimension": "A",
+    "dimensionName": "艺术型 Artistic",
+    "question": "我喜欢提出新点子，而不是只执行已有方案。",
+    "reverse": false
+  },
+  {
+    "id": 30,
+    "dimension": "A",
+    "dimensionName": "艺术型 Artistic",
+    "question": "我愿意从事需要想象力、表达力或审美能力的工作。",
+    "reverse": false
+  },
+  {
+    "id": 31,
+    "dimension": "S",
+    "dimensionName": "社会型 Social",
+    "question": "我喜欢帮助别人解决问题或改善处境。",
+    "reverse": false
+  },
+  {
+    "id": 32,
+    "dimension": "S",
+    "dimensionName": "社会型 Social",
+    "question": "我愿意倾听他人的想法和感受。",
+    "reverse": false
+  },
+  {
+    "id": 33,
+    "dimension": "S",
+    "dimensionName": "社会型 Social",
+    "question": "我喜欢教学、辅导、咨询、护理或服务类活动。",
+    "reverse": false
+  },
+  {
+    "id": 34,
+    "dimension": "S",
+    "dimensionName": "社会型 Social",
+    "question": "我在团队中通常愿意协调关系、支持他人。",
+    "reverse": false
+  },
+  {
+    "id": 35,
+    "dimension": "S",
+    "dimensionName": "社会型 Social",
+    "question": "我能从他人的成长、进步或认可中获得成就感。",
+    "reverse": false
+  },
+  {
+    "id": 36,
+    "dimension": "S",
+    "dimensionName": "社会型 Social",
+    "question": "我喜欢与人沟通，并理解不同人的需求。",
+    "reverse": false
+  },
+  {
+    "id": 37,
+    "dimension": "S",
+    "dimensionName": "社会型 Social",
+    "question": "我愿意参与志愿服务、社团活动或公共服务。",
+    "reverse": false
+  },
+  {
+    "id": 38,
+    "dimension": "S",
+    "dimensionName": "社会型 Social",
+    "question": "我适合做需要耐心、同理心和沟通能力的事情。",
+    "reverse": false
+  },
+  {
+    "id": 39,
+    "dimension": "S",
+    "dimensionName": "社会型 Social",
+    "question": "我喜欢通过合作完成任务，而不是完全独自完成。",
+    "reverse": false
+  },
+  {
+    "id": 40,
+    "dimension": "S",
+    "dimensionName": "社会型 Social",
+    "question": "我愿意帮助新成员适应环境或学习技能。",
+    "reverse": false
+  },
+  {
+    "id": 41,
+    "dimension": "E",
+    "dimensionName": "企业型 Enterprising",
+    "question": "我喜欢说服他人接受一个想法、计划或产品。",
+    "reverse": false
+  },
+  {
+    "id": 42,
+    "dimension": "E",
+    "dimensionName": "企业型 Enterprising",
+    "question": "我愿意承担领导、组织或推动项目的角色。",
+    "reverse": false
+  },
+  {
+    "id": 43,
+    "dimension": "E",
+    "dimensionName": "企业型 Enterprising",
+    "question": "我对商业、管理、销售、创业或市场活动感兴趣。",
+    "reverse": false
+  },
+  {
+    "id": 44,
+    "dimension": "E",
+    "dimensionName": "企业型 Enterprising",
+    "question": "我喜欢设定目标，并带领他人一起完成。",
+    "reverse": false
+  },
+  {
+    "id": 45,
+    "dimension": "E",
+    "dimensionName": "企业型 Enterprising",
+    "question": "面对竞争或挑战时，我通常会更有动力。",
+    "reverse": false
+  },
+  {
+    "id": 46,
+    "dimension": "E",
+    "dimensionName": "企业型 Enterprising",
+    "question": "我愿意在公开场合表达观点或进行展示。",
+    "reverse": false
+  },
+  {
+    "id": 47,
+    "dimension": "E",
+    "dimensionName": "企业型 Enterprising",
+    "question": "我喜欢发现机会，并推动想法落地。",
+    "reverse": false
+  },
+  {
+    "id": 48,
+    "dimension": "E",
+    "dimensionName": "企业型 Enterprising",
+    "question": "我能够接受一定风险来争取更好的结果。",
+    "reverse": false
+  },
+  {
+    "id": 49,
+    "dimension": "E",
+    "dimensionName": "企业型 Enterprising",
+    "question": "我喜欢谈判、策划、宣传或资源整合类任务。",
+    "reverse": false
+  },
+  {
+    "id": 50,
+    "dimension": "E",
+    "dimensionName": "企业型 Enterprising",
+    "question": "我希望自己的工作能产生明显影响或带来成果。",
+    "reverse": false
+  },
+  {
+    "id": 51,
+    "dimension": "C",
+    "dimensionName": "常规型 Conventional",
+    "question": "我喜欢按照清晰规则、流程或标准完成任务。",
+    "reverse": false
+  },
+  {
+    "id": 52,
+    "dimension": "C",
+    "dimensionName": "常规型 Conventional",
+    "question": "我对数据整理、文档管理、财务记录或表格处理感兴趣。",
+    "reverse": false
+  },
+  {
+    "id": 53,
+    "dimension": "C",
+    "dimensionName": "常规型 Conventional",
+    "question": "我做事比较重视准确性、细节和规范。",
+    "reverse": false
+  },
+  {
+    "id": 54,
+    "dimension": "C",
+    "dimensionName": "常规型 Conventional",
+    "question": "我喜欢把信息分类、排序、归档或系统化。",
+    "reverse": false
+  },
+  {
+    "id": 55,
+    "dimension": "C",
+    "dimensionName": "常规型 Conventional",
+    "question": "我愿意完成需要耐心和稳定性的事务性工作。",
+    "reverse": false
+  },
+  {
+    "id": 56,
+    "dimension": "C",
+    "dimensionName": "常规型 Conventional",
+    "question": "我更喜欢目标明确、要求清楚的任务。",
+    "reverse": false
+  },
+  {
+    "id": 57,
+    "dimension": "C",
+    "dimensionName": "常规型 Conventional",
+    "question": "我能接受重复性工作，只要标准明确且结果可检查。",
+    "reverse": false
+  },
+  {
+    "id": 58,
+    "dimension": "C",
+    "dimensionName": "常规型 Conventional",
+    "question": "我喜欢使用软件、表格或系统来提高工作效率。",
+    "reverse": false
+  },
+  {
+    "id": 59,
+    "dimension": "C",
+    "dimensionName": "常规型 Conventional",
+    "question": "我在处理任务时通常会先建立计划和步骤。",
+    "reverse": false
+  },
+  {
+    "id": 60,
+    "dimension": "C",
+    "dimensionName": "常规型 Conventional",
+    "question": "我适合从事需要秩序感、责任心和细致度的工作。",
+    "reverse": false
+  }
+]

@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.whatsnextdemo.data.database.AppDatabase
 import com.example.whatsnextdemo.data.repository.UserRepository
 import com.example.whatsnextdemo.databinding.ActivityRegisterBinding
+import com.example.whatsnextdemo.utils.applySystemBarPadding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -19,6 +20,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.root.applySystemBarPadding()
 
         userRepository = UserRepository(AppDatabase.getInstance(this).userDao())
 

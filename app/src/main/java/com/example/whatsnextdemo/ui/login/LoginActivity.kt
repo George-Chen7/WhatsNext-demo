@@ -11,6 +11,7 @@ import com.example.whatsnextdemo.data.local.SessionManager
 import com.example.whatsnextdemo.data.repository.UserRepository
 import com.example.whatsnextdemo.databinding.ActivityLoginBinding
 import com.example.whatsnextdemo.ui.register.RegisterActivity
+import com.example.whatsnextdemo.utils.applySystemBarPadding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.root.applySystemBarPadding()
 
         sessionManager = SessionManager(this)
         userRepository = UserRepository(AppDatabase.getInstance(this).userDao())

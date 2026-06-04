@@ -8,6 +8,7 @@ import com.example.whatsnextdemo.ui.assessment.AssessmentFragment
 import com.example.whatsnextdemo.ui.home.HomeFragment
 import com.example.whatsnextdemo.ui.profile.ProfileFragment
 import com.example.whatsnextdemo.ui.report.ReportFragment
+import com.example.whatsnextdemo.utils.applySystemBarPadding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.root.applySystemBarPadding()
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
