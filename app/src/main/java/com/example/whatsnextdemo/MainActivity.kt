@@ -1,47 +1,41 @@
 package com.example.whatsnextdemo
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.whatsnextdemo.ui.theme.WhatsnextDemoTheme
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.whatsnextdemo.databinding.ActivityMainBinding
+import com.example.whatsnextdemo.ui.assessment.AssessmentFragment
+import com.example.whatsnextdemo.ui.home.HomeFragment
+import com.example.whatsnextdemo.ui.profile.ProfileFragment
+import com.example.whatsnextdemo.ui.report.ReportFragment
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            WhatsnextDemoTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> showFragment(HomeFragment())
+                R.id.nav_assessment -> showFragment(AssessmentFragment())
+                R.id.nav_report -> showFragment(ReportFragment())
+                R.id.nav_profile -> showFragment(ProfileFragment())
+                else -> false
             }
         }
+
+        if (savedInstanceState == null) {
+            binding.bottomNavigation.selectedItemId = R.id.nav_home
+        }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    WhatsnextDemoTheme {
-        Greeting("Android")
+    private fun showFragment(fragment: Fragment): Boolean {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
+        return true
     }
 }
