@@ -6,6 +6,10 @@
     <string name="nav_profile">我的</string>
     <string name="home_title">AI 职业规划助手</string>
     <string name="home_placeholder">欢迎使用课程设计 Demo，后续将展示职业推荐、测评结果和本地轮播图。</string>
+    <string name="login_title">AI Career Planner</string>
+    <string name="login_subtitle">用本地测评和 AI Mock 报告完成职业规划演示</string>
+    <string name="register_title">创建演示账号</string>
+    <string name="register_subtitle">账号保存在本地 Room 数据库，适合课程答辩展示</string>
     <string name="assessment_placeholder">职业测评</string>
     <string name="report_placeholder">AI 职业报告</string>
     <string name="profile_placeholder">我的</string>
