@@ -29,4 +29,32 @@ class SessionManager(context: Context) {
     fun getUsername(): String {
         return preferences.getString(Constants.KEY_USERNAME, "") ?: ""
     }
+
+    fun isOnboardingCompleted(): Boolean {
+        return preferences.getBoolean(userKey(Constants.KEY_HAS_COMPLETED_ONBOARDING), false)
+    }
+
+    fun setProfileCompleted() {
+        preferences.edit()
+            .putBoolean(userKey(Constants.KEY_HAS_COMPLETE_PROFILE), true)
+            .apply()
+    }
+
+    fun setAssessmentCompleted() {
+        preferences.edit()
+            .putBoolean(userKey(Constants.KEY_HAS_COMPLETED_ASSESSMENT), true)
+            .apply()
+    }
+
+    fun setFirstReportGenerated() {
+        preferences.edit()
+            .putBoolean(userKey(Constants.KEY_HAS_GENERATED_FIRST_REPORT), true)
+            .putBoolean(userKey(Constants.KEY_HAS_COMPLETED_ONBOARDING), true)
+            .apply()
+    }
+
+    private fun userKey(key: String): String {
+        val username = getUsername().ifBlank { "guest" }
+        return "${key}_$username"
+    }
 }

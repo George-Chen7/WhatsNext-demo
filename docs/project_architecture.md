@@ -145,25 +145,13 @@ ProfileFragment
 - 展示欢迎语
 - 展示用户头像
 - 展示最近一次测评结果
-- 展示 AI 推荐职业卡片
 - 展示职业规划宣传图轮播
-- 展示模拟城市热门职业方向
 
 涉及知识点：
 
-- RecyclerView
 - ViewPager2
 - 多媒体本地资源展示
 - 本地数据读取
-
-职业推荐示例：
-
-```text
-软件工程师
-产品经理
-数据分析师
-AI 工程师
-```
 
 ### 4.4 Assessment
 
@@ -364,10 +352,6 @@ CareerReportRepository
     - deleteReport
     - exportReport
     - shareReport
-
-CareerRepository
-    - getRecommendedCareers
-    - getCityHotDirections
 ```
 
 ## 7. Local Data Sources
@@ -381,9 +365,6 @@ AssetQuestionDataSource
 
 FileReportDataSource
     - 负责报告导出
-
-CityCareerDataSource
-    - 负责模拟城市职业方向
 ```
 
 ## 8. Android Knowledge Mapping
@@ -396,7 +377,7 @@ Fragment:
 HomeFragment, AssessmentFragment, ReportFragment, ProfileFragment
 
 RecyclerView:
-职业推荐列表, 题目列表, 历史报告列表
+题目列表, 历史报告列表
 
 BroadcastReceiver:
 强制下线功能
@@ -421,9 +402,6 @@ Multimedia:
 
 Service:
 报告后台导出
-
-Location:
-模拟城市与热门职业方向
 ```
 
 ## 9. Development Order
@@ -434,7 +412,7 @@ Location:
 3. 创建数据模型和 Room 数据库
 4. 实现登录注册
 5. 实现 MainActivity 和四个 Fragment
-6. 实现首页轮播和职业推荐列表
+6. 实现首页轮播和最近测评展示
 7. 实现测评题库读取和答题页面
 8. 实现本地计分和测评结果保存
 9. 实现 Mock AI 报告生成
@@ -455,7 +433,6 @@ SharedPreferences 登录状态
 Room 用户表
 MainActivity + BottomNavigationView
 四个 Fragment
-RecyclerView 推荐列表
 本地 JSON 测评
 测评结果保存
 Mock AI 报告
@@ -470,7 +447,6 @@ Mock AI 报告
 ```text
 真实 AI API
 历史报告搜索
-城市职业方向
 后台导出 Service
 UI 美化
 ```
@@ -478,7 +454,6 @@ UI 美化
 可暂缓：
 
 ```text
-真实定位
 复杂 Markdown 渲染
 复杂头像上传
 完整聊天机器人

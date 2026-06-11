@@ -16,17 +16,16 @@
 | 跨程序共享数据 | 分享职业规划报告 | Android Share Intent，FileProvider |
 | 多媒体展示 | 首页宣传图轮播 | ViewPager2 + 本地图片 |
 | Fragment | 主页面四个 Tab | HomeFragment、AssessmentFragment、ReportFragment、ProfileFragment |
-| RecyclerView | 推荐职业、题目、历史报告 | Adapter + item layout |
+| RecyclerView | 题目、历史报告 | Adapter + item layout |
 | 网络请求 | AI 报告生成 | Retrofit / OkHttp 调用大模型 API |
 | 后台服务 | 报告导出 | ReportExportService |
 | AI 功能模块 | AI 职业规划报告 | CareerAiService |
-| 位置服务加分 | 当前城市热门方向 | 第一版模拟城市，第二版可接真实定位 |
 
 ## 3. 亮点说明
 
 ### 3.1 AI 职业规划报告
 
-项目不是简单展示测试结果，而是将用户资料、MBTI、霍兰德结果和城市方向组合成用户画像，再生成职业规划报告。
+项目不是简单展示测试结果，而是将用户资料、MBTI 和霍兰德结果组合成用户画像，再生成职业规划报告。
 
 体现：
 
@@ -72,18 +71,6 @@ Intent
 FileProvider
 ```
 
-### 3.5 位置服务变通
-
-第一版使用模拟城市，降低权限和真机环境复杂度。
-
-答辩说明：
-
-```text
-真实定位不是核心功能。
-课程 Demo 中使用模拟城市可以体现位置服务思想。
-后续可接 FusedLocationProvider 或 Android LocationManager。
-```
-
 ## 4. 可舍弃或简化的功能
 
 根据课设要求，不必完全复刻参考 App。
@@ -93,7 +80,6 @@ FileProvider
 ```text
 复杂社区功能
 完整聊天机器人
-真实地图定位
 云端账号同步
 复杂推荐算法
 ```
@@ -103,4 +89,3 @@ FileProvider
 ```text
 这些功能不能显著增加课程知识点覆盖，反而会增加不稳定性。
 ```
-

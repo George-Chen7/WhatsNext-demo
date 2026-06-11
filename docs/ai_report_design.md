@@ -26,10 +26,8 @@ UserProfile
 name: String
 username: String
 major: String?
-city: String?
 mbti: String?
 holland: String?
-cityHotDirections: List<String>
 ```
 
 示例：
@@ -39,10 +37,8 @@ cityHotDirections: List<String>
   "name": "George",
   "username": "george",
   "major": "Computer Science",
-  "city": "深圳",
   "mbti": "INTJ",
-  "holland": "IAS",
-  "cityHotDirections": ["互联网", "AI", "硬件研发"]
+  "holland": "IAS"
 }
 ```
 
@@ -78,7 +74,7 @@ RealCareerAiService
 1. 用户画像
 2. MBTI 结果
 3. 霍兰德职业兴趣结果
-4. 用户所在城市及热门职业方向
+4. 专业背景和学习偏好
 
 生成：
 - 用户画像分析
@@ -134,7 +130,7 @@ MockCareerAiService 需要：
 不联网
 不需要 API Key
 返回结构完整的 Markdown
-根据 mbti、holland、major、city 做少量模板替换
+根据 mbti、holland、major 做少量模板替换
 保证每次答辩都能稳定生成报告
 ```
 
@@ -199,4 +195,3 @@ API Key 缺失：
 报告为空：
     提示生成失败，请重试。
 ```
-

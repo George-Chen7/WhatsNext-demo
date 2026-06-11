@@ -26,4 +26,15 @@ class UserRepository(private val userDao: UserDao) {
     suspend fun findUser(username: String): UserEntity? {
         return userDao.findByUsername(username)
     }
+
+    suspend fun updateProfile(username: String, nickname: String, major: String): Boolean {
+        val user = userDao.findByUsername(username) ?: return false
+        userDao.update(
+            user.copy(
+                nickname = nickname,
+                major = major
+            )
+        )
+        return true
+    }
 }

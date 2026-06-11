@@ -10,6 +10,7 @@ import com.example.whatsnextdemo.data.database.AppDatabase
 import com.example.whatsnextdemo.data.local.SessionManager
 import com.example.whatsnextdemo.data.repository.UserRepository
 import com.example.whatsnextdemo.databinding.ActivityLoginBinding
+import com.example.whatsnextdemo.ui.onboarding.OnboardingWelcomeActivity
 import com.example.whatsnextdemo.ui.register.RegisterActivity
 import com.example.whatsnextdemo.utils.applySystemBarPadding
 import kotlinx.coroutines.Dispatchers
@@ -31,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
         userRepository = UserRepository(AppDatabase.getInstance(this).userDao())
 
         if (sessionManager.isLogin()) {
-            openMain()
+            openNextPage()
             return
         }
 
@@ -57,13 +58,18 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this@LoginActivity, "用户名或密码错误", Toast.LENGTH_SHORT).show()
             } else {
                 sessionManager.saveLogin(username)
-                openMain()
+                openNextPage()
             }
         }
     }
 
-    private fun openMain() {
-        startActivity(Intent(this, MainActivity::class.java))
+    private fun openNextPage() {
+        val target = if (sessionManager.isOnboardingCompleted()) {
+            MainActivity::class.java
+        } else {
+            OnboardingWelcomeActivity::class.java
+        }
+        startActivity(Intent(this, target))
         finish()
     }
 }

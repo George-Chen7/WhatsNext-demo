@@ -139,7 +139,7 @@ UI 页面框架、Activity / Fragment 结构和底部导航实现方案见：[UI
 - 使用柔和阴影
 - 卡片视觉保持轻盈
 - 避免卡片套卡片
-- 首页职业推荐、测评入口、历史报告都使用统一卡片风格
+- 首页最近测评、测评入口、历史报告都使用统一卡片风格
 
 ### 输入框
 
@@ -188,7 +188,6 @@ UI 页面框架、Activity / Fragment 结构和底部导航实现方案见：[UI
 - 职业发展
 - AI 职业规划
 - 测评结果
-- 推荐职业方向
 - 技能学习路线
 - 个人档案管理
 - 历史报告管理
@@ -197,7 +196,7 @@ UI 页面框架、Activity / Fragment 结构和底部导航实现方案见：[UI
 
 ```text
 首页：
-强调欢迎语、宣传图轮播、最近测评和推荐职业。
+强调欢迎语、宣传图轮播和最近测评。
 
 测评：
 强调测试入口、测试进度、题目可读性和提交反馈。
@@ -239,8 +238,6 @@ UI 页面框架、Activity / Fragment 结构和底部导航实现方案见：[UI
 - 顶部欢迎区
 - ViewPager2 图片轮播
 - 最近测评结果卡片
-- 推荐职业横向或纵向 RecyclerView
-- 城市热门方向使用小标签展示
 
 ### 测评页
 
@@ -295,7 +292,7 @@ Overall visual style: clean, professional, youthful, with a subtle technology fe
 
 The app has a bottom navigation bar with four tabs: 首页, 测评, 报告, 我的.
 
-首页 shows a welcome message, user avatar, local banner carousel, latest assessment result, city-based hot career directions, and AI recommended career cards.
+首页 shows a welcome message, user avatar, local banner carousel, and latest assessment result.
 测评 includes MBTI and Holland Code tests, with simple single-choice questions and progress feedback.
 报告 displays an AI-generated Markdown career planning report, with save, share, export, history, search, and delete actions.
 我的 contains personal profile, edit profile, report history, about page, and a force-offline test button.
@@ -316,7 +313,7 @@ Buttons are capsule-shaped or large rounded rectangles, with blue-filled primary
 Icons are simple, consistent, linear icons.
 The layout should not feel crowded and should preserve realistic mobile app spacing.
 
-Visual focus should emphasize career development, AI career planning, assessment results, recommended jobs, skill learning routes, report management, and personal profile management.
+Visual focus should emphasize career development, AI career planning, assessment results, skill learning routes, report management, and personal profile management.
 
 Output style: high-fidelity Android app UI screenshot, realistic phone interface, modern SaaS / job platform / learning product style, clean and professional, complete details, suitable as mobile app design reference.
 ```

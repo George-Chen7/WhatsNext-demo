@@ -32,7 +32,6 @@ isLogin
 username
 token
 mockAiEnabled
-city
 ```
 
 用途：
@@ -43,7 +42,6 @@ city
 模拟 token
 用户配置
 AI Mock 开关
-模拟城市
 ```
 
 退出登录或强制下线时清空：
@@ -249,4 +247,3 @@ File Storage:
     缺点：不适合复杂查询。
     本项目用途：导出职业规划报告。
 ```
-

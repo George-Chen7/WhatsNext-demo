@@ -2,6 +2,7 @@ package com.example.whatsnextdemo.ui.assessment
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
@@ -19,6 +20,7 @@ import com.example.whatsnextdemo.data.repository.AssessmentRepository
 import com.example.whatsnextdemo.databinding.ActivityQuestionBinding
 import com.example.whatsnextdemo.databinding.DialogAssessmentExitBinding
 import com.example.whatsnextdemo.databinding.DialogAssessmentResultBinding
+import com.example.whatsnextdemo.ui.onboarding.AiAnalyzingActivity
 import com.example.whatsnextdemo.utils.applySystemBarPadding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -233,6 +235,11 @@ class QuestionActivity : AppCompatActivity() {
         }
         dialogBinding.btnReturn.setOnClickListener {
             dialog.dismiss()
+            finish()
+        }
+        dialogBinding.btnGenerateAiReport.setOnClickListener {
+            dialog.dismiss()
+            startActivity(Intent(this, AiAnalyzingActivity::class.java))
             finish()
         }
         dialog.setOnShowListener {

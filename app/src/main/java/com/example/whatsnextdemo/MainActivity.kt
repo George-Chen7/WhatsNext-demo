@@ -30,7 +30,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (savedInstanceState == null) {
-            binding.bottomNavigation.selectedItemId = R.id.nav_home
+            binding.bottomNavigation.selectedItemId = when (intent.getStringExtra(EXTRA_START_TAB)) {
+                TAB_REPORT -> R.id.nav_report
+                else -> R.id.nav_home
+            }
         }
     }
 
@@ -39,5 +42,10 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fragmentContainer, fragment)
             .commit()
         return true
+    }
+
+    companion object {
+        const val EXTRA_START_TAB = "start_tab"
+        const val TAB_REPORT = "report"
     }
 }

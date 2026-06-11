@@ -12,6 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WhatsnextDemo">
         <activity
+            android:name=".ui.ai.AiReportActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.onboarding.AiAnalyzingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.onboarding.AssessmentGuideActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.onboarding.ProfileSetupActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.onboarding.OnboardingWelcomeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="false"
             android:screenOrientation="portrait" />

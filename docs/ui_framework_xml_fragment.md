@@ -19,7 +19,6 @@ ViewPager2
 
 - Activity 生命周期
 - Fragment 创建与切换
-- RecyclerView 列表展示
 - Intent 页面跳转与数据传递
 - XML 布局与适配
 - Material 底部导航
@@ -179,8 +178,6 @@ res/layout/activity_main.xml
 - 展示头像
 - 展示本地 banner 轮播
 - 展示最近测评结果
-- 展示 AI 推荐职业 RecyclerView
-- 展示模拟城市热门职业方向
 
 布局文件：
 
@@ -191,7 +188,6 @@ res/layout/fragment_home.xml
 列表项：
 
 ```text
-res/layout/item_career_card.xml
 res/layout/item_banner.xml
 ```
 
@@ -199,7 +195,6 @@ res/layout/item_banner.xml
 
 ```text
 ViewPager2
-RecyclerView
 MaterialCardView
 ```
 
@@ -331,7 +326,6 @@ res/layout/fragment_report.xml
 res/layout/fragment_profile.xml
 
 res/layout/item_banner.xml
-res/layout/item_career_card.xml
 res/layout/item_question.xml
 res/layout/item_report.xml
 res/layout/item_assessment_result.xml
@@ -373,7 +367,6 @@ ui/main/
 
 ui/home/
     HomeFragment.kt
-    CareerAdapter.kt
     BannerAdapter.kt
 
 ui/assessment/
@@ -412,7 +405,7 @@ ui/profile/
 6. 在 MainActivity 中实现 BottomNavigationView 切换。
 7. 创建 LoginActivity 和 RegisterActivity。
 8. 在 Manifest 中将 LoginActivity 设置为启动页，或使用 Splash/Launcher 判断登录状态。
-9. 补充 RecyclerView、ViewPager2 和业务页面。
+9. 补充 ViewPager2、RecyclerView 题目列表和业务页面。
 10. 编译运行，确认页面跳转和 Fragment 切换正常。
 ```
 
@@ -427,7 +420,7 @@ BottomNavigationView 四个菜单可点击
 Fragment 切换不崩溃
 返回键行为符合预期
 横竖屏或不同尺寸下布局不严重错位
-RecyclerView 能正常显示列表
+RecyclerView 题目或历史列表能正常显示
 ViewPager2 能正常显示本地图片
 ```
 
@@ -439,7 +432,6 @@ ViewPager2 能正常显示本地图片
 Activity 之间的转换与数据传递
 Fragment 的使用
 底部菜单导航
-RecyclerView 列表展示
 多媒体轮播
 不同页面模块的组织方式
 完整 App 的工程结构

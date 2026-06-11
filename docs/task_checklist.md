@@ -72,18 +72,13 @@
 ## Phase 5: 首页
 
 - [ ] 创建首页布局 `fragment_home.xml`。
-- [ ] 创建职业推荐模型。
-- [ ] 创建 `CareerAdapter`。
-- [ ] 创建职业推荐 item 布局。
 - [ ] 创建 banner 数据模型。
 - [ ] 创建 `BannerAdapter`。
 - [ ] 创建 banner item 布局。
 - [ ] 准备本地 banner 图片资源。
 - [ ] 使用 ViewPager2 展示 banner 轮播。
-- [ ] 使用 RecyclerView 展示推荐职业。
 - [ ] 展示当前用户名。
 - [ ] 展示最近测评结果。
-- [ ] 展示模拟城市热门职业方向。
 - [ ] 编译运行，验证首页展示正常。
 
 ## Phase 6: 测评题库
@@ -208,4 +203,3 @@
 - [ ] 准备默认演示测评结果。
 - [ ] 准备 3-5 分钟答辩演示路线。
 - [ ] 对照 `course_requirement_mapping.md` 检查课程知识点覆盖。
-
