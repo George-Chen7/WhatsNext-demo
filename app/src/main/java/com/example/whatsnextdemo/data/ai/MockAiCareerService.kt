@@ -13,11 +13,11 @@ class MockAiCareerService : AiCareerService {
         val industry = profile.expectedIndustry.ifBlank { "AI 应用、软件开发、数据分析" }
 
         return AiAnalysisResponse(
-            summary = "${profile.nickname} 的 MBTI 倾向为 ${request.mbtiResult.type}，霍兰德前三项为 ${request.hollandResult.topCode}。综合 ${major} 背景、能力基础和当前测评结果，更适合从技术理解、数据分析、产品表达或业务运营结合的方向切入。该结论用于职业探索参考，不作为单一决定依据。",
+            summary = "${profile.nickname} 的 MBTI 倾向为 ${request.mbtiResult.type}，霍兰德前三项为 ${request.hollandResult.topCode}，职业能力优势集中在 ${request.careerAbilityResult.topDimensions}，职业锚偏向 ${request.careerAnchorResult.topDimensions}，职业价值观更重视 ${request.careerValuesResult.topDimensions}。综合 ${major} 背景、能力基础和当前测评结果，更适合从技术理解、数据分析、产品表达或业务运营结合的方向切入。该结论用于职业探索参考，不作为单一决定依据。",
             personalityStrengths = listOf(
                 "能从兴趣和任务反馈中持续寻找适合自己的方向，适合通过项目作品验证职业选择。",
-                "具备将测评结果转化为学习计划的基础，适合循序渐进积累作品集。",
-                "如果能补强沟通表达和行业认知，会更容易在实习和校招中说明个人优势。"
+                "职业能力测评显示 ${request.careerAbilityResult.topDimensions} 较突出，适合把优势转化为课程项目、竞赛作品或实习经历。",
+                "职业锚和价值观结果显示 ${request.careerAnchorResult.topDimensions}、${request.careerValuesResult.topDimensions} 是重要偏好，后续选岗位时应同时看工作内容、组织环境和成长节奏。"
             ),
             suitableIndustries = listOf(
                 industry,
@@ -31,8 +31,8 @@ class MockAiCareerService : AiCareerService {
             ),
             learningSuggestions = listOf(
                 "围绕一个职业规划 App 或校园服务 App 完成可展示项目，沉淀需求文档、原型和代码说明。",
-                "补充 SQL、数据可视化、基础 Python 或 Kotlin 项目能力，让测评结果能对应具体技能证据。",
-                "每周复盘一次岗位 JD，把高频技能整理成学习清单，并用小项目验证。"
+                "结合职业能力测评分数 ${request.careerAbilityResult.dimensionScores}，优先补齐低分能力，并用小任务验证提升效果。",
+                "每周复盘一次岗位 JD，把岗位要求与职业锚 ${request.careerAnchorResult.dimensionScores}、价值观 ${request.careerValuesResult.dimensionScores} 对照，筛选更匹配的目标。"
             ),
             actionPlan = ActionPlan(
                 shortTerm = "整理个人资料、测评结果和目标岗位，完成一版简历与 1 个课程设计项目说明。",

@@ -7,6 +7,7 @@ import com.example.whatsnextdemo.data.ai.AiCareerRepository
 import com.example.whatsnextdemo.data.database.entity.CareerReportEntity
 import com.example.whatsnextdemo.data.local.SessionManager
 import com.example.whatsnextdemo.data.model.AiAnalysisRequest
+import com.example.whatsnextdemo.data.model.CareerDimensionResult
 import com.example.whatsnextdemo.data.model.HollandResult
 import com.example.whatsnextdemo.data.model.MbtiResult
 import com.example.whatsnextdemo.data.model.UserProfile
@@ -21,6 +22,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
+import java.util.Calendar
 
 class AiAnalysisViewModel(
     private val sessionManager: SessionManager,
@@ -71,20 +73,34 @@ class AiAnalysisViewModel(
             val username = sessionManager.getUsername().ifBlank { "guest" }
             val user = userRepository.findUser(username)
             val results = assessmentRepository.getResults(username)
+            val currentYear: Int = Calendar.getInstance().get(Calendar.YEAR)
             val mbti = results.firstOrNull { it.type == AssessmentScorer.TYPE_MBTI }
                 ?: error("请先完成 MBTI 测评")
             val holland = results.firstOrNull { it.type == AssessmentScorer.TYPE_HOLLAND }
                 ?: error("请先完成霍兰德测评")
+            val careerAbility = results.firstOrNull { it.type == AssessmentScorer.TYPE_CAREER_ABILITY }
+                ?: error("请先完成职业能力测评")
+            val careerAnchor = results.firstOrNull { it.type == AssessmentScorer.TYPE_CAREER_ANCHOR }
+                ?: error("请先完成职业锚测评")
+            val careerValues = results.firstOrNull { it.type == AssessmentScorer.TYPE_CAREER_VALUES }
+                ?: error("请先完成职业价值观测评")
 
             val profile = UserProfile(
                 username = username,
                 nickname = user?.nickname.orEmpty().ifBlank { username },
-                education = "本科",
+                age = user?.birthYear?.let { birthYear -> currentYear - birthYear },
+                gender = user?.gender.orEmpty(),
+                education = user?.education.orEmpty(),
                 major = user?.major.orEmpty(),
-                expectedIndustry = "AI 应用、软件开发、数据分析",
-                strengths = listOf("学习能力", "项目实践", "自我复盘"),
-                hobbies = listOf("技术学习", "职业探索"),
-                extraNotes = "当前阶段优先保证课程设计演示稳定，真实求职偏好可在资料页扩展填写。",
+                school = user?.schoolType.orEmpty(),
+                grade = user?.grade.orEmpty(),
+                expectedIndustry = user?.expectedIndustries.orEmpty(),
+                strengths = splitProfileValues(user?.targetPositions),
+                hobbies = splitProfileValues(user?.expectedIndustries),
+                extraNotes = buildProfileNotes(
+                    graduationPlan = user?.graduationPlan.orEmpty(),
+                    englishLevels = user?.englishLevels.orEmpty()
+                ),
                 mbti = mbti.result,
                 holland = holland.result
             )
@@ -99,6 +115,18 @@ class AiAnalysisViewModel(
                     topCode = holland.result,
                     dimensionScores = parseScores(holland.scoreDetail)
                 ),
+                careerAbilityResult = CareerDimensionResult(
+                    topDimensions = careerAbility.result,
+                    dimensionScores = parseScores(careerAbility.scoreDetail)
+                ),
+                careerAnchorResult = CareerDimensionResult(
+                    topDimensions = careerAnchor.result,
+                    dimensionScores = parseScores(careerAnchor.scoreDetail)
+                ),
+                careerValuesResult = CareerDimensionResult(
+                    topDimensions = careerValues.result,
+                    dimensionScores = parseScores(careerValues.scoreDetail)
+                ),
                 supplement = profile.extraNotes
             )
         }
@@ -108,6 +136,19 @@ class AiAnalysisViewModel(
         val json = JSONObject(scoreDetail)
         return json.keys().asSequence()
             .associateWith { key -> json.optInt(key) }
+    }
+
+    private fun splitProfileValues(values: String?): List<String> {
+        if (values.isNullOrBlank()) {
+            return emptyList()
+        }
+        return values.split(PROFILE_LIST_SEPARATOR)
+            .map { value -> value.trim() }
+            .filter { value -> value.isNotEmpty() }
+    }
+
+    private fun buildProfileNotes(graduationPlan: String, englishLevels: String): String {
+        return "毕业计划：${graduationPlan.ifBlank { "未填写" }}；英语水平：${englishLevels.ifBlank { "未填写" }}"
     }
 
     class Factory(
@@ -127,5 +168,9 @@ class AiAnalysisViewModel(
                 aiCareerRepository
             ) as T
         }
+    }
+
+    private companion object {
+        private const val PROFILE_LIST_SEPARATOR: String = "、"
     }
 }

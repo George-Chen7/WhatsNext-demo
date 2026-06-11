@@ -4,7 +4,7 @@ import com.example.whatsnextdemo.data.model.AiAnalysisRequest
 import com.example.whatsnextdemo.data.model.AiAnalysisResponse
 
 class AiCareerRepository(
-    private val service: AiCareerService = MockAiCareerService()
+    private val service: AiCareerService
 ) {
     suspend fun generateAnalysis(request: AiAnalysisRequest): Result<AiAnalysisResponse> {
         return runCatching {

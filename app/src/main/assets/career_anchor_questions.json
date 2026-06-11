@@ -1,0 +1,170 @@
+[
+  {
+    "id": 1,
+    "testType": "career_anchor",
+    "question": "我希望未来能在某个专业领域持续深入发展。",
+    "dimension": "technical",
+    "reverse": false
+  },
+  {
+    "id": 2,
+    "testType": "career_anchor",
+    "question": "相比管理别人，我更希望提升自己的专业能力。",
+    "dimension": "technical",
+    "reverse": false
+  },
+  {
+    "id": 3,
+    "testType": "career_anchor",
+    "question": "如果能成为某个领域的专家，我会很有成就感。",
+    "dimension": "technical",
+    "reverse": false
+  },
+  {
+    "id": 4,
+    "testType": "career_anchor",
+    "question": "我喜欢解决需要专业知识和技术能力的问题。",
+    "dimension": "technical",
+    "reverse": false
+  },
+  {
+    "id": 5,
+    "testType": "career_anchor",
+    "question": "我希望未来能够管理团队或项目。",
+    "dimension": "management",
+    "reverse": false
+  },
+  {
+    "id": 6,
+    "testType": "career_anchor",
+    "question": "我对组织资源、分配任务和推动目标完成感兴趣。",
+    "dimension": "management",
+    "reverse": false
+  },
+  {
+    "id": 7,
+    "testType": "career_anchor",
+    "question": "我希望自己的职业发展中有机会承担领导责任。",
+    "dimension": "management",
+    "reverse": false
+  },
+  {
+    "id": 8,
+    "testType": "career_anchor",
+    "question": "我愿意为团队结果负责，而不只是完成个人任务。",
+    "dimension": "management",
+    "reverse": false
+  },
+  {
+    "id": 9,
+    "testType": "career_anchor",
+    "question": "我希望未来有机会创建自己的事业或项目。",
+    "dimension": "entrepreneurial",
+    "reverse": false
+  },
+  {
+    "id": 10,
+    "testType": "career_anchor",
+    "question": "我愿意承担风险去尝试新的商业机会。",
+    "dimension": "entrepreneurial",
+    "reverse": false
+  },
+  {
+    "id": 11,
+    "testType": "career_anchor",
+    "question": "相比进入成熟组织，我也会考虑自己从零开始做一件事。",
+    "dimension": "entrepreneurial",
+    "reverse": false
+  },
+  {
+    "id": 12,
+    "testType": "career_anchor",
+    "question": "我希望自己的工作能直接帮助他人。",
+    "dimension": "service",
+    "reverse": false
+  },
+  {
+    "id": 13,
+    "testType": "career_anchor",
+    "question": "如果一份职业能改善他人的生活，我会觉得很有意义。",
+    "dimension": "service",
+    "reverse": false
+  },
+  {
+    "id": 14,
+    "testType": "career_anchor",
+    "question": "我愿意把个人能力用于服务社会或解决公共问题。",
+    "dimension": "service",
+    "reverse": false
+  },
+  {
+    "id": 15,
+    "testType": "career_anchor",
+    "question": "我喜欢面对有难度、有挑战的问题。",
+    "dimension": "challenge",
+    "reverse": false
+  },
+  {
+    "id": 16,
+    "testType": "career_anchor",
+    "question": "越是复杂的任务，越能激发我的投入感。",
+    "dimension": "challenge",
+    "reverse": false
+  },
+  {
+    "id": 17,
+    "testType": "career_anchor",
+    "question": "我希望通过不断突破困难来证明自己的能力。",
+    "dimension": "challenge",
+    "reverse": false
+  },
+  {
+    "id": 18,
+    "testType": "career_anchor",
+    "question": "相比安稳重复的工作，我更喜欢有挑战性的任务。",
+    "dimension": "challenge",
+    "reverse": false
+  },
+  {
+    "id": 19,
+    "testType": "career_anchor",
+    "question": "我希望职业发展路径清晰，工作环境相对稳定。",
+    "dimension": "security",
+    "reverse": false
+  },
+  {
+    "id": 20,
+    "testType": "career_anchor",
+    "question": "我会优先考虑工作保障、福利制度和长期稳定性。",
+    "dimension": "security",
+    "reverse": false
+  },
+  {
+    "id": 21,
+    "testType": "career_anchor",
+    "question": "如果一份工作风险较高，即使发展空间大，我也会谨慎选择。",
+    "dimension": "security",
+    "reverse": false
+  },
+  {
+    "id": 22,
+    "testType": "career_anchor",
+    "question": "我希望在工作中拥有较高的自主决定权。",
+    "dimension": "autonomy",
+    "reverse": false
+  },
+  {
+    "id": 23,
+    "testType": "career_anchor",
+    "question": "我不喜欢被过多规则限制自己的工作方式。",
+    "dimension": "autonomy",
+    "reverse": false
+  },
+  {
+    "id": 24,
+    "testType": "career_anchor",
+    "question": "相比被安排任务，我更希望自己决定如何完成工作。",
+    "dimension": "autonomy",
+    "reverse": false
+  }
+]

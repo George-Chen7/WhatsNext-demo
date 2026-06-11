@@ -13,11 +13,19 @@ data class HollandResult(
     val dimensionScores: Map<String, Int>
 )
 
+data class CareerDimensionResult(
+    val topDimensions: String,
+    val dimensionScores: Map<String, Int>
+)
+
 data class AiAnalysisRequest(
     val userProfile: UserProfile,
     val mbtiResult: MbtiResult,
     val hollandResult: HollandResult,
-    val supplement: String = userProfile.extraNotes
+    val careerAbilityResult: CareerDimensionResult,
+    val careerAnchorResult: CareerDimensionResult,
+    val careerValuesResult: CareerDimensionResult,
+    val supplement: String
 )
 
 data class ActionPlan(

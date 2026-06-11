@@ -65,13 +65,13 @@ class QuestionActivity : AppCompatActivity() {
         val dataSource = AssetQuestionDataSource(this)
         questions = when (assessmentType) {
             AssessmentScorer.TYPE_MBTI -> dataSource.loadMbtiQuestions()
+            AssessmentScorer.TYPE_CAREER_ABILITY -> dataSource.loadCareerAbilityQuestions()
+            AssessmentScorer.TYPE_CAREER_ANCHOR -> dataSource.loadCareerAnchorQuestions()
+            AssessmentScorer.TYPE_CAREER_VALUES -> dataSource.loadCareerValuesQuestions()
             else -> dataSource.loadHollandQuestions()
         }
 
-        binding.tvQuestionTitle.text = when (assessmentType) {
-            AssessmentScorer.TYPE_MBTI -> "MBTI 简化测试"
-            else -> "霍兰德职业兴趣测试"
-        }
+        binding.tvQuestionTitle.text = AssessmentScorer.titleOf(assessmentType)
         renderCurrentQuestion()
     }
 

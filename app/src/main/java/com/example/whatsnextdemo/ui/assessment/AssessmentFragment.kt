@@ -29,6 +29,15 @@ class AssessmentFragment : Fragment() {
         binding.btnStartMbti.setOnClickListener {
             startQuestionActivity(AssessmentScorer.TYPE_MBTI)
         }
+        binding.btnStartCareerAbility.setOnClickListener {
+            startQuestionActivity(AssessmentScorer.TYPE_CAREER_ABILITY)
+        }
+        binding.btnStartCareerAnchor.setOnClickListener {
+            startQuestionActivity(AssessmentScorer.TYPE_CAREER_ANCHOR)
+        }
+        binding.btnStartCareerValues.setOnClickListener {
+            startQuestionActivity(AssessmentScorer.TYPE_CAREER_VALUES)
+        }
     }
 
     private fun startQuestionActivity(type: String) {

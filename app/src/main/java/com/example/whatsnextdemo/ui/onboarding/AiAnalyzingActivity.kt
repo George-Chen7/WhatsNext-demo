@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.whatsnextdemo.data.ai.AiCareerRepository
-import com.example.whatsnextdemo.data.ai.MockAiCareerService
+import com.example.whatsnextdemo.data.ai.RemoteAiCareerService
 import com.example.whatsnextdemo.data.database.AppDatabase
 import com.example.whatsnextdemo.data.local.SessionManager
 import com.example.whatsnextdemo.data.repository.AssessmentRepository
@@ -30,7 +30,7 @@ class AiAnalyzingActivity : AppCompatActivity() {
             userRepository = UserRepository(database.userDao()),
             assessmentRepository = AssessmentRepository(database.assessmentResultDao()),
             careerReportRepository = CareerReportRepository(database.careerReportDao()),
-            aiCareerRepository = AiCareerRepository(MockAiCareerService())
+            aiCareerRepository = AiCareerRepository(RemoteAiCareerService())
         )
     }
 
@@ -62,7 +62,7 @@ class AiAnalyzingActivity : AppCompatActivity() {
                 binding.progressAnalyzing.show()
                 binding.btnRetryAi.visibility = View.GONE
                 binding.tvAnalyzingTitle.text = "AI 正在分析"
-                binding.tvAnalyzingMessage.text = "正在整合用户画像、MBTI 和霍兰德测评结果..."
+                binding.tvAnalyzingMessage.text = "正在整合用户画像和五类测评结果..."
             }
             is AiAnalysisUiState.Success -> {
                 binding.progressAnalyzing.hide()

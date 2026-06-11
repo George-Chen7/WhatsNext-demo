@@ -14,6 +14,7 @@ import com.example.whatsnextdemo.data.repository.CareerReportRepository
 import com.example.whatsnextdemo.data.repository.UserRepository
 import com.example.whatsnextdemo.databinding.FragmentProfileBinding
 import com.example.whatsnextdemo.receiver.ForceOfflineReceiver
+import com.example.whatsnextdemo.ui.onboarding.ProfileSetupActivity
 import com.example.whatsnextdemo.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -43,12 +44,18 @@ class ProfileFragment : Fragment() {
         careerReportRepository = CareerReportRepository(database.careerReportDao())
 
         setupClickListeners()
+    }
+
+    override fun onResume() {
+        super.onResume()
         loadProfile()
     }
 
     private fun setupClickListeners() {
         binding.rowEditProfile.setOnClickListener {
-            Toast.makeText(requireContext(), "资料编辑将在后续阶段完善", Toast.LENGTH_SHORT).show()
+            val intent: Intent = Intent(requireContext(), ProfileSetupActivity::class.java)
+                .putExtra(ProfileSetupActivity.EXTRA_RETURN_AFTER_SAVE, true)
+            startActivity(intent)
         }
         binding.rowHistoryReport.setOnClickListener {
             Toast.makeText(requireContext(), "请在底部“报告”页面查看历史报告", Toast.LENGTH_SHORT).show()
@@ -86,8 +93,22 @@ class ProfileFragment : Fragment() {
             binding.tvUsername.text = user?.nickname?.ifBlank { username } ?: username
             binding.tvMajor.text = user?.major?.ifBlank { null } ?: "专业信息未填写"
             binding.tvReportCount.text = reports.size.toString()
-            binding.tvProfileSubtitle.text = "本地账号 · Room + SharedPreferences"
+            binding.tvProfileSubtitle.text = buildProfileSubtitle(
+                education = user?.education.orEmpty(),
+                grade = user?.grade.orEmpty(),
+                graduationPlan = user?.graduationPlan.orEmpty()
+            )
         }
+    }
+
+    private fun buildProfileSubtitle(education: String, grade: String, graduationPlan: String): String {
+        val parts: List<String> = listOf(education, grade, graduationPlan)
+            .map { value -> value.trim() }
+            .filter { value -> value.isNotEmpty() }
+        if (parts.isEmpty()) {
+            return "本地账号 · Room + SharedPreferences"
+        }
+        return parts.joinToString(" · ")
     }
 
     override fun onDestroyView() {

@@ -15,6 +15,15 @@ data class UserEntity(
     val password: String,
     val nickname: String? = null,
     val major: String? = null,
+    val gender: String? = null,
+    val birthYear: Int? = null,
+    val education: String? = null,
+    val schoolType: String? = null,
+    val grade: String? = null,
+    val graduationPlan: String? = null,
+    val expectedIndustries: String? = null,
+    val targetPositions: String? = null,
+    val englishLevels: String? = null,
     val avatarPath: String? = null,
     val createTime: Long = System.currentTimeMillis()
 )

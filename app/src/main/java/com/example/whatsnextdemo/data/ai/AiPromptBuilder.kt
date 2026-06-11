@@ -6,13 +6,14 @@ object AiPromptBuilder {
     fun buildCareerAnalysisPrompt(request: AiAnalysisRequest): String {
         val profile = request.userProfile
         return """
-            你是一名面向大学生的职业规划顾问，请根据用户资料、MBTI 结果和霍兰德职业兴趣结果，生成客观、具体、可执行的职业规划分析。
+            你是一名面向大学生的职业规划顾问，请根据用户资料、MBTI、霍兰德职业兴趣、职业能力、职业锚和职业价值观结果，生成客观、具体、可执行的职业规划分析。
 
             分析要求：
-            1. 结合用户画像、专业背景、行业偏好和测评结果综合判断。
+            1. 结合用户画像、专业背景、行业偏好和五类测评结果综合判断。
             2. 不要生成过度绝对化结论，不要把 MBTI 当成唯一判断依据。
             3. 建议要适合大学生课程设计 App 的职业规划场景，重点体现学习路径、岗位探索和 1-3 年行动计划。
-            4. 只返回 JSON，不要返回 Markdown 或额外解释。
+            4. 必须把职业能力、职业锚和职业价值观测评纳入行业、岗位和学习建议。
+            5. 只返回 JSON，不要返回 Markdown 或额外解释。
 
             用户基础资料：
             - 昵称：${profile.nickname}
@@ -33,6 +34,18 @@ object AiPromptBuilder {
             霍兰德结果：
             - RIASEC 排名前三项：${request.hollandResult.topCode}
             - 各维度分数：${request.hollandResult.dimensionScores}
+
+            职业能力测评结果：
+            - 优势维度前三项：${request.careerAbilityResult.topDimensions}
+            - 各维度分数：${request.careerAbilityResult.dimensionScores}
+
+            职业锚测评结果：
+            - 主导职业锚前三项：${request.careerAnchorResult.topDimensions}
+            - 各维度分数：${request.careerAnchorResult.dimensionScores}
+
+            职业价值观测评结果：
+            - 核心价值观前三项：${request.careerValuesResult.topDimensions}
+            - 各维度分数：${request.careerValuesResult.dimensionScores}
 
             用户目标和偏好：
             ${request.supplement.ifBlank { "用户暂未填写补充说明，可按普通大学生职业规划场景给出稳妥建议。" }}
