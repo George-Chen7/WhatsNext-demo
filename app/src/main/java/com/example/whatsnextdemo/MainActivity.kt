@@ -44,6 +44,14 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    fun openAssessmentTab(): Unit {
+        binding.bottomNavigation.selectedItemId = R.id.nav_assessment
+    }
+
+    fun openReportTab(): Unit {
+        binding.bottomNavigation.selectedItemId = R.id.nav_report
+    }
+
     companion object {
         const val EXTRA_START_TAB = "start_tab"
         const val TAB_REPORT = "report"
