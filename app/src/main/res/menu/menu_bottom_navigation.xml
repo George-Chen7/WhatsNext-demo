@@ -9,9 +9,9 @@
         android:icon="@drawable/ic_nav_assessment"
         android:title="@string/nav_assessment" />
     <item
-        android:id="@+id/nav_report"
-        android:icon="@drawable/ic_nav_report"
-        android:title="@string/nav_report" />
+        android:id="@+id/nav_plan"
+        android:icon="@drawable/ic_nav_plan"
+        android:title="@string/nav_plan" />
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_nav_profile"
