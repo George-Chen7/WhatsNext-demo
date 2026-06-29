@@ -18,6 +18,7 @@ class ProfileSetupActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileSetupBinding
     private lateinit var sessionManager: SessionManager
     private lateinit var userRepository: UserRepository
+    private var shouldReturnToProfile: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +26,13 @@ class ProfileSetupActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.root.applySystemBarPadding()
 
+        shouldReturnToProfile = intent.getBooleanExtra(EXTRA_RETURN_TO_PROFILE, false)
         sessionManager = SessionManager(this)
         userRepository = UserRepository(AppDatabase.getInstance(this).userDao())
         preloadUser()
+        if (shouldReturnToProfile) {
+            binding.btnNextAssessment.text = "保存资料"
+        }
 
         binding.btnNextAssessment.setOnClickListener {
             saveProfile()
@@ -67,7 +72,16 @@ class ProfileSetupActivity : AppCompatActivity() {
             }
 
             sessionManager.setProfileCompleted()
-            startActivity(Intent(this@ProfileSetupActivity, AssessmentGuideActivity::class.java))
+            if (shouldReturnToProfile) {
+                Toast.makeText(this@ProfileSetupActivity, "资料已更新", Toast.LENGTH_SHORT).show()
+                finish()
+            } else {
+                startActivity(Intent(this@ProfileSetupActivity, AssessmentGuideActivity::class.java))
+            }
         }
+    }
+
+    companion object {
+        const val EXTRA_RETURN_TO_PROFILE: String = "return_to_profile"
     }
 }
