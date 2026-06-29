@@ -40,6 +40,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "AI_API_KEY", secretFromLocalOrEnv("AI_API_KEY").toBuildConfigString())
         buildConfigField("String", "AI_API_ENDPOINT", secretFromLocalOrEnv("AI_API_ENDPOINT").toBuildConfigString())
+        buildConfigField("String", "AI_MODEL", secretFromLocalOrEnv("AI_MODEL").ifBlank { "deepseek-v4-pro" }.toBuildConfigString())
     }
 
     buildTypes {

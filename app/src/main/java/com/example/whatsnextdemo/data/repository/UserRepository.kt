@@ -2,6 +2,7 @@ package com.example.whatsnextdemo.data.repository
 
 import com.example.whatsnextdemo.data.database.dao.UserDao
 import com.example.whatsnextdemo.data.database.entity.UserEntity
+import com.example.whatsnextdemo.data.model.UserProfileForm
 
 class UserRepository(private val userDao: UserDao) {
     suspend fun register(username: String, password: String): Result<Long> {
@@ -27,12 +28,16 @@ class UserRepository(private val userDao: UserDao) {
         return userDao.findByUsername(username)
     }
 
-    suspend fun updateProfile(username: String, nickname: String, major: String): Boolean {
+    suspend fun updateProfile(username: String, profile: UserProfileForm): Boolean {
         val user = userDao.findByUsername(username) ?: return false
         userDao.update(
             user.copy(
-                nickname = nickname,
-                major = major
+                nickname = profile.nickname,
+                major = profile.major,
+                grade = profile.grade,
+                targetCareer = profile.targetCareer,
+                interestedIndustry = profile.interestedIndustry,
+                strengths = profile.strengths
             )
         )
         return true

@@ -1,5 +1,6 @@
 package com.example.whatsnextdemo.ui.report
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +21,11 @@ import com.example.whatsnextdemo.data.repository.ActionTaskRepository
 import com.example.whatsnextdemo.data.repository.CareerReportRepository
 import com.example.whatsnextdemo.databinding.FragmentReportBinding
 import com.example.whatsnextdemo.ui.onboarding.AiAnalyzingActivity
-import android.content.Intent
+import java.io.File
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -50,6 +55,9 @@ class ReportFragment : Fragment() {
         actionTaskRepository = ActionTaskRepository(database.actionTaskDao())
         binding.btnImportReportActions.setOnClickListener {
             showImportDialog()
+        }
+        binding.btnExportReport.setOnClickListener {
+            exportCurrentReport()
         }
         binding.btnGenerateReportFromEmpty.setOnClickListener {
             openAssessmentOrGenerateReport()
@@ -163,6 +171,100 @@ class ReportFragment : Fragment() {
         }
     }
 
+    private fun exportCurrentReport(): Unit {
+        val report: CareerReportEntity = latestReport ?: run {
+            Toast.makeText(requireContext(), "当前没有可导出的职业报告", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (report.content.isBlank()) {
+            Toast.makeText(requireContext(), "当前职业报告内容为空，无法导出", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val exportDirectory: File = File(requireContext().filesDir, REPORT_EXPORT_DIRECTORY)
+        binding.btnExportReport.isEnabled = false
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val exportedFile: File = withContext(Dispatchers.IO) {
+                    writeReportFile(report, exportDirectory)
+                }
+                Toast.makeText(
+                    requireContext(),
+                    "报告已保存：${exportedFile.name}",
+                    Toast.LENGTH_LONG
+                ).show()
+            } catch (error: IOException) {
+                Toast.makeText(
+                    requireContext(),
+                    "导出失败：${error.message}",
+                    Toast.LENGTH_LONG
+                ).show()
+            } catch (error: SecurityException) {
+                Toast.makeText(
+                    requireContext(),
+                    "导出失败：没有写入报告文件的权限，${error.message}",
+                    Toast.LENGTH_LONG
+                ).show()
+            } finally {
+                _binding?.btnExportReport?.isEnabled = true
+            }
+        }
+    }
+
+    private fun writeReportFile(report: CareerReportEntity, exportDirectory: File): File {
+        if (!exportDirectory.exists() && !exportDirectory.mkdirs()) {
+            throw IOException("无法创建目录 ${exportDirectory.absolutePath}")
+        }
+        if (!exportDirectory.isDirectory) {
+            throw IOException("导出路径不是目录 ${exportDirectory.absolutePath}")
+        }
+
+        val fileName: String = buildReportFileName(report)
+        val reportFile: File = File(exportDirectory, fileName)
+        val content: String = buildReportFileContent(report)
+        reportFile.writeText(content, Charsets.UTF_8)
+        return reportFile
+    }
+
+    private fun buildReportFileName(report: CareerReportEntity): String {
+        val safeTitle: String = sanitizeFileNamePart(report.title)
+        val timestamp: String = formatFileTimestamp(report.createTime)
+        return "career_report_${safeTitle}_$timestamp.txt"
+    }
+
+    private fun sanitizeFileNamePart(value: String): String {
+        val cleanedValue: String = value
+            .trim()
+            .replace(Regex("[\\\\/:*?\"<>|\\s]+"), "_")
+            .trim('_')
+        if (cleanedValue.isBlank()) {
+            throw IOException("报告标题为空，无法生成导出文件名")
+        }
+        return cleanedValue
+    }
+
+    private fun buildReportFileContent(report: CareerReportEntity): String {
+        return """
+            报告标题：${report.title}
+            生成时间：${formatDisplayTime(report.createTime)}
+            MBTI 结果：${report.mbti}
+            霍兰德结果：${report.holland}
+
+            报告正文：
+            ${report.content}
+        """.trimIndent()
+    }
+
+    private fun formatFileTimestamp(createTime: Long): String {
+        val formatter: SimpleDateFormat = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINA)
+        return formatter.format(Date(createTime))
+    }
+
+    private fun formatDisplayTime(createTime: Long): String {
+        val formatter: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)
+        return formatter.format(Date(createTime))
+    }
+
     private fun openAssessmentOrGenerateReport(): Unit {
         val report: CareerReportEntity? = latestReport
         if (report == null) {
@@ -179,5 +281,9 @@ class ReportFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val REPORT_EXPORT_DIRECTORY: String = "career_reports"
     }
 }

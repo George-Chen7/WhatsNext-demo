@@ -32,6 +32,18 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/btnExportReport"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_chat_action"
+            android:gravity="center"
+            android:text="导出报告"
+            android:textColor="@color/brand_navy"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/btnImportReportActions"
             android:layout_width="match_parent"
             android:layout_height="52dp"

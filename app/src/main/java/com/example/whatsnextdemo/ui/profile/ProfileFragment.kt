@@ -173,17 +173,12 @@ class ProfileFragment : Fragment() {
         activeTaskCount: Int
     ): Unit {
         val majorStatus: String = major.ifBlank { "专业信息未完善" }
-        val majorLine: String = if (major.isBlank()) "专业：未完善" else "专业：$major"
         binding.tvUsername.text = displayName
         binding.tvAvatar.text = avatarText(displayName)
         binding.tvProfileSubtitle.text = "$majorStatus · 职业规划进行中"
-        binding.tvHeaderAssessmentCount.text = assessmentCount.toString()
-        binding.tvHeaderReportCount.text = reportCount.toString()
-        binding.tvHeaderTaskCount.text = activeTaskCount.toString()
         binding.tvAssessmentCount.text = assessmentCount.toString()
         binding.tvReportCount.text = reportCount.toString()
         binding.tvTaskCount.text = activeTaskCount.toString()
-        binding.tvMajor.text = majorLine
         binding.rowHistoryReport.tvMenuValue.text = "${reportCount}份"
     }
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="profile_setup_screen_padding">20dp</dimen>
+    <dimen name="profile_setup_top_margin">12dp</dimen>
+    <dimen name="profile_setup_card_margin_top">18dp</dimen>
+    <dimen name="profile_setup_card_padding">18dp</dimen>
+    <dimen name="profile_setup_field_margin_top">14dp</dimen>
+    <dimen name="profile_setup_field_corner">14dp</dimen>
+    <dimen name="profile_setup_button_height">54dp</dimen>
+    <dimen name="profile_setup_button_margin_top">24dp</dimen>
+    <dimen name="profile_setup_button_corner">16dp</dimen>
+    <dimen name="profile_setup_back_size">44dp</dimen>
+    <dimen name="profile_setup_back_icon_padding">10dp</dimen>
+</resources>

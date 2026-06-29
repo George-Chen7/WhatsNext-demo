@@ -22,6 +22,7 @@ object AiPromptBuilder {
             - 学校：${profile.school.ifBlank { "未填写" }}
             - 专业：${profile.major.ifBlank { "未填写" }}
             - 当前年级：${profile.grade.ifBlank { "未填写" }}
+            - 目标职业方向：${profile.targetCareer.ifBlank { "未填写" }}
             - 期望行业：${profile.expectedIndustry.ifBlank { "未填写" }}
             - 个人优势：${profile.strengths.joinToString("、").ifBlank { "未填写" }}
             - 兴趣爱好：${profile.hobbies.joinToString("、").ifBlank { "未填写" }}

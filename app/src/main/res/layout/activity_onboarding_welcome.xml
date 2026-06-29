@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:lineSpacingExtra="6dp"
-                    android:text="1. 填写个人信息&#10;2. 完成职业测评&#10;3. 获取 AI 职业分析报告"
+                    android:text="1. 填写个人信息&#10;2. 完成职业测评&#10;3. 获取 AI 职业分析报告&#10;4. 制定并执行职业行动计划"
                     android:textColor="@color/text_secondary"
                     android:textSize="16sp" />
 

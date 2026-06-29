@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.whatsnextdemo.data.ai.AiCareerRepository
-import com.example.whatsnextdemo.data.ai.MockAiCareerService
+import com.example.whatsnextdemo.data.ai.RemoteAiCareerService
 import com.example.whatsnextdemo.data.database.AppDatabase
 import com.example.whatsnextdemo.data.local.SessionManager
 import com.example.whatsnextdemo.data.repository.AssessmentRepository
@@ -30,7 +30,7 @@ class AiAnalyzingActivity : AppCompatActivity() {
             userRepository = UserRepository(database.userDao()),
             assessmentRepository = AssessmentRepository(database.assessmentResultDao()),
             careerReportRepository = CareerReportRepository(database.careerReportDao()),
-            aiCareerRepository = AiCareerRepository(MockAiCareerService())
+            aiCareerRepository = AiCareerRepository(RemoteAiCareerService())
         )
     }
 
@@ -60,12 +60,14 @@ class AiAnalyzingActivity : AppCompatActivity() {
             AiAnalysisUiState.Idle -> Unit
             AiAnalysisUiState.Loading -> {
                 binding.progressAnalyzing.show()
+                binding.btnRetryAi.isEnabled = false
                 binding.btnRetryAi.visibility = View.GONE
                 binding.tvAnalyzingTitle.text = "AI 正在分析"
-                binding.tvAnalyzingMessage.text = "正在整合用户画像、MBTI 和霍兰德测评结果..."
+                binding.tvAnalyzingMessage.text = "正在读取个人资料和测评结果，并请求真实 AI 服务生成报告..."
             }
             is AiAnalysisUiState.Success -> {
                 binding.progressAnalyzing.hide()
+                binding.btnRetryAi.isEnabled = false
                 binding.btnRetryAi.visibility = View.GONE
                 binding.tvAnalyzingTitle.text = "AI 分析完成"
                 binding.tvAnalyzingMessage.text = "已生成结构化职业分析报告"
@@ -76,6 +78,7 @@ class AiAnalyzingActivity : AppCompatActivity() {
             }
             is AiAnalysisUiState.Error -> {
                 binding.progressAnalyzing.hide()
+                binding.btnRetryAi.isEnabled = true
                 binding.btnRetryAi.visibility = View.VISIBLE
                 binding.tvAnalyzingTitle.text = "AI 分析失败"
                 binding.tvAnalyzingMessage.text = state.message

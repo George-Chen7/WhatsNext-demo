@@ -5,10 +5,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.whatsnextdemo.data.database.AppDatabase
+import com.example.whatsnextdemo.data.database.entity.AssessmentResultEntity
 import com.example.whatsnextdemo.data.local.SessionManager
 import com.example.whatsnextdemo.data.repository.AssessmentRepository
 import com.example.whatsnextdemo.databinding.ActivityAssessmentGuideBinding
 import com.example.whatsnextdemo.ui.assessment.AssessmentScorer
+import com.example.whatsnextdemo.ui.assessment.ManualAssessmentResultDialog
 import com.example.whatsnextdemo.ui.assessment.QuestionActivity
 import com.example.whatsnextdemo.utils.applySystemBarPadding
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +22,7 @@ class AssessmentGuideActivity : AppCompatActivity() {
     private lateinit var sessionManager: SessionManager
     private lateinit var assessmentRepository: AssessmentRepository
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?): Unit {
         super.onCreate(savedInstanceState)
         binding = ActivityAssessmentGuideBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -37,30 +39,36 @@ class AssessmentGuideActivity : AppCompatActivity() {
         binding.btnStartMbti.setOnClickListener {
             openQuestion(AssessmentScorer.TYPE_MBTI)
         }
+        binding.tvImportHollandResult.setOnClickListener {
+            showManualImportDialog(AssessmentScorer.TYPE_HOLLAND)
+        }
+        binding.tvImportMbtiResult.setOnClickListener {
+            showManualImportDialog(AssessmentScorer.TYPE_MBTI)
+        }
         binding.btnStartAi.setOnClickListener {
             startActivity(Intent(this, AiAnalyzingActivity::class.java))
         }
     }
 
-    override fun onResume() {
+    override fun onResume(): Unit {
         super.onResume()
         refreshStatus()
     }
 
-    private fun openQuestion(type: String) {
-        val intent = Intent(this, QuestionActivity::class.java)
+    private fun openQuestion(type: String): Unit {
+        val intent: Intent = Intent(this, QuestionActivity::class.java)
             .putExtra(AssessmentScorer.EXTRA_ASSESSMENT_TYPE, type)
         startActivity(intent)
     }
 
-    private fun refreshStatus() {
+    private fun refreshStatus(): Unit {
         lifecycleScope.launch {
-            val username = sessionManager.getUsername().ifBlank { "guest" }
-            val results = withContext(Dispatchers.IO) {
+            val username: String = sessionManager.getUsername().ifBlank { "guest" }
+            val results: List<AssessmentResultEntity> = withContext(Dispatchers.IO) {
                 assessmentRepository.getResults(username)
             }
-            val hasHolland = results.any { it.type == AssessmentScorer.TYPE_HOLLAND }
-            val hasMbti = results.any { it.type == AssessmentScorer.TYPE_MBTI }
+            val hasHolland: Boolean = results.any { it.type == AssessmentScorer.TYPE_HOLLAND }
+            val hasMbti: Boolean = results.any { it.type == AssessmentScorer.TYPE_MBTI }
 
             binding.tvHollandStatus.text = if (hasHolland) "已完成" else "未完成"
             binding.tvMbtiStatus.text = if (hasMbti) "已完成" else "未完成"
@@ -74,5 +82,17 @@ class AssessmentGuideActivity : AppCompatActivity() {
                 "请先完成两项职业测评"
             }
         }
+    }
+
+    private fun showManualImportDialog(type: String): Unit {
+        ManualAssessmentResultDialog(
+            context = this,
+            layoutInflater = layoutInflater,
+            lifecycleScope = lifecycleScope,
+            sessionManager = sessionManager,
+            assessmentRepository = assessmentRepository,
+            assessmentType = type,
+            onResultImported = { refreshStatus() }
+        ).show()
     }
 }

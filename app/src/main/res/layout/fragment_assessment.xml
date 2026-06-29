@@ -42,7 +42,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="18dp">
+                android:paddingStart="18dp"
+                android:paddingTop="18dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="12dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -67,6 +70,20 @@
                     android:layout_height="48dp"
                     android:layout_marginTop="14dp"
                     android:text="开始霍兰德测试" />
+
+                <TextView
+                    android:id="@+id/tvImportHollandResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:minHeight="28dp"
+                    android:text="导入测试结果"
+                    android:textColor="@color/text_hint"
+                    android:textSize="13sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -84,7 +101,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="18dp">
+                android:paddingStart="18dp"
+                android:paddingTop="18dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="12dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -109,6 +129,20 @@
                     android:layout_height="48dp"
                     android:layout_marginTop="14dp"
                     android:text="开始 MBTI 测试" />
+
+                <TextView
+                    android:id="@+id/tvImportMbtiResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:minHeight="28dp"
+                    android:text="导入测试结果"
+                    android:textColor="@color/text_hint"
+                    android:textSize="13sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>

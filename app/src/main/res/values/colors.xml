@@ -17,6 +17,10 @@
     <color name="border_light">#D9DEE8</color>
     <color name="text_primary">#2E3849</color>
     <color name="text_secondary">#5A6881</color>
+    <color name="text_hint">#7A869A</color>
+    <color name="input_error">#C62828</color>
+    <color name="primary_ripple">#1F051A49</color>
+    <color name="button_disabled">#8A94A8</color>
     <color name="bottom_nav_selected">#051A49</color>
     <color name="bottom_nav_unselected">#5A6881</color>
 </resources>

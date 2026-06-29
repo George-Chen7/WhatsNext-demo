@@ -9,6 +9,7 @@ data class UserProfile(
     val major: String = "",
     val school: String = "",
     val grade: String = "",
+    val targetCareer: String = "",
     val expectedIndustry: String = "",
     val strengths: List<String> = emptyList(),
     val hobbies: List<String> = emptyList(),

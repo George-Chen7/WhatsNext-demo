@@ -13,4 +13,41 @@
     <string name="assessment_placeholder">职业测评</string>
     <string name="report_placeholder">AI 职业报告</string>
     <string name="profile_placeholder">我的</string>
+    <string name="profile_setup_title">填写个人信息</string>
+    <string name="profile_setup_step">第 1 步，共 2 步</string>
+    <string name="profile_setup_subtitle">这些信息将用于生成更贴近你的职业分析报告</string>
+    <string name="profile_setup_back">返回</string>
+    <string name="profile_setup_nickname_label">昵称 *</string>
+    <string name="profile_setup_nickname_helper">将用于首页问候和个人资料展示</string>
+    <string name="profile_setup_nickname_hint">请输入昵称，例如：小陈</string>
+    <string name="profile_setup_major_label">专业 *</string>
+    <string name="profile_setup_major_hint">请输入专业，例如：计算机科学与技术</string>
+    <string name="profile_setup_grade_label">年级 *</string>
+    <string name="profile_setup_grade_hint">请选择年级</string>
+    <string name="profile_setup_target_career_label">目标职业方向 *</string>
+    <string name="profile_setup_target_career_hint">例如：Android 开发工程师</string>
+    <string name="profile_setup_industry_label">感兴趣的行业（选填）</string>
+    <string name="profile_setup_industry_hint">例如：移动互联网、人工智能</string>
+    <string name="profile_setup_strengths_label">个人优势（选填）</string>
+    <string name="profile_setup_strengths_hint">简单描述你的优势，例如逻辑分析、沟通表达、项目实践</string>
+    <string name="profile_setup_save_start">保存并开始测评</string>
+    <string name="profile_setup_save_only">保存资料</string>
+    <string name="profile_setup_error_nickname_required">请输入昵称</string>
+    <string name="profile_setup_error_nickname_length">昵称长度应为 2～12 个字符</string>
+    <string name="profile_setup_error_major_required">请输入专业</string>
+    <string name="profile_setup_error_major_length">专业名称长度应为 2～30 个字符</string>
+    <string name="profile_setup_error_grade_required">请选择年级</string>
+    <string name="profile_setup_error_target_career_required">请输入目标职业方向</string>
+    <string name="profile_setup_error_target_career_length">目标职业方向长度应为 2～30 个字符</string>
+    <string name="profile_setup_saved">资料已更新</string>
+    <string name="profile_setup_missing_user">用户信息不存在，请重新登录</string>
+    <string name="profile_setup_load_failed">读取用户资料失败，请重新进入页面</string>
+    <string-array name="profile_setup_grade_options">
+        <item>大一</item>
+        <item>大二</item>
+        <item>大三</item>
+        <item>大四</item>
+        <item>研究生</item>
+        <item>已毕业</item>
+    </string-array>
 </resources>

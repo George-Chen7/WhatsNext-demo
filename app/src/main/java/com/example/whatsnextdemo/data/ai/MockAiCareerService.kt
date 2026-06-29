@@ -10,10 +10,13 @@ class MockAiCareerService : AiCareerService {
         delay(900)
         val profile = request.userProfile
         val major = profile.major.ifBlank { "当前专业" }
-        val industry = profile.expectedIndustry.ifBlank { "AI 应用、软件开发、数据分析" }
+        val grade = profile.grade.ifBlank { "当前阶段" }
+        val targetCareer = profile.targetCareer.ifBlank { "职业目标方向" }
+        val industry = profile.expectedIndustry.ifBlank { "软件开发、数字化服务、数据分析" }
+        val strengths = profile.strengths.joinToString("、").ifBlank { "学习能力、项目实践和自我复盘" }
 
         return AiAnalysisResponse(
-            summary = "${profile.nickname} 的 MBTI 倾向为 ${request.mbtiResult.type}，霍兰德前三项为 ${request.hollandResult.topCode}。综合 ${major} 背景、能力基础和当前测评结果，更适合从技术理解、数据分析、产品表达或业务运营结合的方向切入。该结论用于职业探索参考，不作为单一决定依据。",
+            summary = "${profile.nickname} 当前为 ${grade}，目标职业方向是 ${targetCareer}。MBTI 倾向为 ${request.mbtiResult.type}，霍兰德前三项为 ${request.hollandResult.topCode}。综合 ${major} 背景、${industry} 行业兴趣、${strengths} 等个人优势和当前测评结果，建议优先围绕目标岗位建立项目作品与学习计划。该结论用于职业探索参考，不作为单一决定依据。",
             personalityStrengths = listOf(
                 "能从兴趣和任务反馈中持续寻找适合自己的方向，适合通过项目作品验证职业选择。",
                 "具备将测评结果转化为学习计划的基础，适合循序渐进积累作品集。",
@@ -25,7 +28,7 @@ class MockAiCareerService : AiCareerService {
                 "教育科技、数据分析相关行业"
             ),
             suitablePositions = listOf(
-                "AI 产品助理 / 产品经理实习生",
+                targetCareer,
                 "数据分析实习生",
                 "Android 应用开发 / 前端开发实习生"
             ),

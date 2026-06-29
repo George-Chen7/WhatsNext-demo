@@ -83,22 +83,29 @@ data class AiAnalysisResponse(
 
     companion object {
         fun fromJsonString(json: String): AiAnalysisResponse {
-            val root = JSONObject(json)
-            val actionPlan = root.getJSONObject("actionPlan")
+            val root: JSONObject = JSONObject(json)
+            val actionPlan: JSONObject = root.getJSONObject("actionPlan")
             return AiAnalysisResponse(
-                summary = root.optString("summary"),
-                personalityStrengths = root.optJSONArray("personalityStrengths").toStringList(),
-                suitableIndustries = root.optJSONArray("suitableIndustries").toStringList(),
-                suitablePositions = root.optJSONArray("suitablePositions").toStringList(),
-                learningSuggestions = root.optJSONArray("learningSuggestions").toStringList(),
+                summary = requireNonBlank(root.getString("summary"), "summary"),
+                personalityStrengths = root.getJSONArray("personalityStrengths").toStringList("personalityStrengths"),
+                suitableIndustries = root.getJSONArray("suitableIndustries").toStringList("suitableIndustries"),
+                suitablePositions = root.getJSONArray("suitablePositions").toStringList("suitablePositions"),
+                learningSuggestions = root.getJSONArray("learningSuggestions").toStringList("learningSuggestions"),
                 actionPlan = ActionPlan(
-                    shortTerm = actionPlan.optString("shortTerm"),
-                    midTerm = actionPlan.optString("midTerm"),
-                    longTerm = actionPlan.optString("longTerm")
+                    shortTerm = requireNonBlank(actionPlan.getString("shortTerm"), "actionPlan.shortTerm"),
+                    midTerm = requireNonBlank(actionPlan.getString("midTerm"), "actionPlan.midTerm"),
+                    longTerm = requireNonBlank(actionPlan.getString("longTerm"), "actionPlan.longTerm")
                 ),
-                risks = root.optJSONArray("risks").toStringList(),
-                finalAdvice = root.optString("finalAdvice")
+                risks = root.getJSONArray("risks").toStringList("risks"),
+                finalAdvice = requireNonBlank(root.getString("finalAdvice"), "finalAdvice")
             )
+        }
+
+        private fun requireNonBlank(value: String, fieldName: String): String {
+            if (value.isBlank()) {
+                throw org.json.JSONException("AI response field is blank: $fieldName")
+            }
+            return value
         }
     }
 }
@@ -109,7 +116,15 @@ private fun List<String>.toJsonArray(): JSONArray {
     return array
 }
 
-private fun JSONArray?.toStringList(): List<String> {
-    if (this == null) return emptyList()
-    return List(length()) { index -> optString(index) }
+private fun JSONArray.toStringList(fieldName: String): List<String> {
+    if (length() == 0) {
+        throw org.json.JSONException("AI response array is empty: $fieldName")
+    }
+    return List(length()) { index: Int ->
+        val value: String = getString(index)
+        if (value.isBlank()) {
+            throw org.json.JSONException("AI response array item is blank: $fieldName[$index]")
+        }
+        value
+    }
 }

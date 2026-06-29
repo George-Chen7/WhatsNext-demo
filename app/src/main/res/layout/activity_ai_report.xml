@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Mock 大模型分析结果，后续可替换为真实 API"
+            android:text="基于当前个人资料、MBTI 与霍兰德测评结果生成"
             android:textColor="@color/text_secondary"
             android:textSize="14sp" />
 

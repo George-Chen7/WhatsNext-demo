@@ -23,7 +23,7 @@ import com.example.whatsnextdemo.data.database.entity.UserEntity
         CareerReportEntity::class,
         ActionTaskEntity::class
     ],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 @SkipQueryVerification
@@ -69,6 +69,15 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        private val migration3To4: Migration = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase): Unit {
+                db.execSQL("ALTER TABLE `users` ADD COLUMN `grade` TEXT")
+                db.execSQL("ALTER TABLE `users` ADD COLUMN `targetCareer` TEXT")
+                db.execSQL("ALTER TABLE `users` ADD COLUMN `interestedIndustry` TEXT")
+                db.execSQL("ALTER TABLE `users` ADD COLUMN `strengths` TEXT")
+            }
+        }
+
         fun getInstance(context: Context): AppDatabase {
             return instance ?: synchronized(this) {
                 instance ?: Room.databaseBuilder(
@@ -76,7 +85,7 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "career_planner.db"
                 )
-                    .addMigrations(migration1To2, migration2To3)
+                    .addMigrations(migration1To2, migration2To3, migration3To4)
                     .build()
                     .also { instance = it }
             }

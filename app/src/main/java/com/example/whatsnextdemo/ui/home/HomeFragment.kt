@@ -11,9 +11,11 @@ import com.example.whatsnextdemo.MainActivity
 import com.example.whatsnextdemo.data.database.AppDatabase
 import com.example.whatsnextdemo.data.database.entity.ActionTaskEntity
 import com.example.whatsnextdemo.data.database.entity.AssessmentResultEntity
+import com.example.whatsnextdemo.data.database.entity.UserEntity
 import com.example.whatsnextdemo.data.local.SessionManager
 import com.example.whatsnextdemo.data.repository.ActionTaskRepository
 import com.example.whatsnextdemo.data.repository.AssessmentRepository
+import com.example.whatsnextdemo.data.repository.UserRepository
 import com.example.whatsnextdemo.databinding.FragmentHomeBinding
 import com.example.whatsnextdemo.ui.assessment.AssessmentScorer
 import com.example.whatsnextdemo.ui.onboarding.AiAnalyzingActivity
@@ -28,6 +30,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var sessionManager: SessionManager
+    private lateinit var userRepository: UserRepository
     private lateinit var assessmentRepository: AssessmentRepository
     private lateinit var actionTaskRepository: ActionTaskRepository
     private val dateFormatter: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
@@ -45,6 +48,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         sessionManager = SessionManager(requireContext())
         val database: AppDatabase = AppDatabase.getInstance(requireContext())
+        userRepository = UserRepository(database.userDao())
         assessmentRepository = AssessmentRepository(database.assessmentResultDao())
         actionTaskRepository = ActionTaskRepository(database.actionTaskDao())
 
@@ -56,6 +60,9 @@ class HomeFragment : Fragment() {
 
     override fun onResume(): Unit {
         super.onResume()
+        if (this::userRepository.isInitialized) {
+            setupHeader()
+        }
         if (this::actionTaskRepository.isInitialized) {
             loadActionPlanSummary()
         }
@@ -63,9 +70,15 @@ class HomeFragment : Fragment() {
 
     private fun setupHeader(): Unit {
         val username: String = sessionManager.getUsername().ifBlank { "同学" }
-        binding.tvWelcome.text = "你好，$username"
-        binding.tvAvatar.text = username.take(1).uppercase()
         binding.tvAssistantMessage.text = "我会先了解你的兴趣、性格和能力，再把结果整理成一份适合答辩展示的职业规划报告。"
+        viewLifecycleOwner.lifecycleScope.launch {
+            val displayName: String = withContext(Dispatchers.IO) {
+                val user: UserEntity? = userRepository.findUser(username)
+                user?.nickname.orEmpty().trim().ifBlank { username }
+            }
+            binding.tvWelcome.text = "你好，$displayName"
+            binding.tvAvatar.text = displayName.trim().ifBlank { "同" }.take(1).uppercase()
+        }
     }
 
     private fun setupActions(): Unit {
